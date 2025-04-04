@@ -1,0 +1,46 @@
+import pygame
+import os
+from random import randint
+
+pygame.init()
+
+size_window = (500,600)
+size_background = (600,10000)
+size_hero = (70,50)
+size_bot = (42,48)
+
+#78,63636363636364 15x15 79
+BLACK = (0,0,0)
+WHITE = (255,255,255)
+BLUE = (135, 206, 250)
+RED = (255, 0, 0)
+
+FPS = 60
+
+heart_list = list()
+bot_list = list()
+bullet_list_hero = list()
+bullet_list_bot = list()
+
+
+abs_path = os.path.abspath(__file__ + "/..")
+hero_image_list = [
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","spaceshooterhero.png")),size_hero)
+]
+bot_image_list = [
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","spaceshooterenemy.png")),size_hero)
+]
+
+
+
+background_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","background.png")),size_background)
+heart_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","heart.png")),[30,30])
+
+
+
+
+
+
+
+
+
