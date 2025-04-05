@@ -27,11 +27,21 @@ while game:
     events = pygame.event.get()
     background.move(window)
 
+    render_text_hp = font.render(f"x{hero.hp}",True, RED)
+    render_kill_bot = font.render(f"x{hero.kill_bot}",True, RED)
+    window.blit(heart_image, (10,10))
+    window.blit(render_text_hp,(45,12))
+    window.blit(skull_image,(size_window[0] -85,10))
+    window.blit(render_kill_bot,(size_window[0] -50,12))
+
+
+
     hero.move(window)
     for bot in bot_list:
         bot.move(window)
         bot.shoot(end_time_bot)
-        bot.collide(bullet_list_hero)
+        if bot.collide(bullet_list_hero):
+            hero.kill_bot += 1
     
     #CREATE BOT
 
@@ -54,8 +64,14 @@ while game:
         bullet.move(window)
 
     #COLLIDE
-    hero.collide(bot_list)
-    hero.collide(bullet_list_bot)
+    hero.collide_enemy(bot_list)
+    hero.collide_enemy(bullet_list_bot)
+    index_buff = hero.collide_uff(Buff.buff_list)
+    if index_buff != -1:
+        Buff.buff_list[index_buff].completing()
+    for buff in Buff.buff_list:
+        buff_move(window)
+        buff.work_time(hero)
 
 
 
@@ -68,7 +84,7 @@ while game:
             if event.key == pygame.K_d:
                 hero.walk["right"] = True
             if event.key == pygame.K_SPACE and hero.can_shoot:
-                bullet_list_hero.append(Bullet(hero.centerx - 5, hero.y,10,20,BLUE,-5, None))
+                bullet_list_hero.append(Bullet(hero.centerx - 5, hero.y,10,20,BLUE,hero.speed_bullet, None))
                 hero.can_shoot = False
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
