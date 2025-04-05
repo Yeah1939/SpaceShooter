@@ -7,7 +7,7 @@ pygame.init()
 size_window = (500,600)
 size_background = (600,10000)
 size_hero = (70,50)
-size_bot = (42,48)
+size_bot = (42,50)
 
 #78,63636363636364 15x15 79
 BLACK = (0,0,0)
@@ -16,6 +16,7 @@ BLUE = (135, 206, 250)
 RED = (255, 0, 0)
 
 FPS = 60
+COUNT_BUFF = 5
 
 heart_list = list()
 bot_list = list()
@@ -35,7 +36,7 @@ bot_image_list = [
 
 background_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","background.png")),size_background)
 heart_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","heart.png")),[30,30])
-
+skull_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","skull.png")),[30,30])
 
 
 
