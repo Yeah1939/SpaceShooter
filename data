@@ -1,6 +1,6 @@
 import pygame
 import os
-from random import randint
+from random import randint, choice
 
 pygame.init()
 
@@ -8,6 +8,7 @@ size_window = (500,600)
 size_background = (600,10000)
 size_hero = (70,50)
 size_bot = (42,50)
+size_buff = (50,50)
 
 #78,63636363636364 15x15 79
 BLACK = (0,0,0)
@@ -17,6 +18,7 @@ RED = (255, 0, 0)
 
 FPS = 60
 COUNT_BUFF = 5
+BUFFS = ["HP","speed_bullet","speed_shoot","immortal","freezing"]
 
 heart_list = list()
 bot_list = list()
@@ -38,10 +40,12 @@ background_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_pat
 heart_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","heart.png")),[30,30])
 skull_image = pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","skull.png")),[30,30])
 
-
-
-
-
-
+buff_images = [
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","b_bulllet_limit.png")),size_buff),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","b_speed_limit.png")),size_buff),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","b_freezing.png")),size_buff),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","b_heart.png")),size_buff),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path,"image","b_immortal.png")),size_buff)
+]
 
 
